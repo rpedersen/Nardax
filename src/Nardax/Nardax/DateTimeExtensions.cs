@@ -33,6 +33,12 @@ namespace Nardax
             return dateTime >= value ? dateTime : value;
         }
 
+        public static int MinutesFrom(this DateTime dateTime, DateTime from)
+        {
+            var timeSpan = (dateTime - from);
+            return Convert.ToInt32(timeSpan.TotalMinutes);
+        }
+
         public static int SecondsFrom(this DateTime dateTime, DateTime from)
         {
             var timeSpan = (dateTime - from);
@@ -44,6 +50,11 @@ namespace Nardax
             return new DateTime(1970, 1, 1);
         }
 
+        public static int MinutesFromUnixEpoch(this DateTime dateTime)
+        {
+            return dateTime.MinutesFrom(GetUnixEpoch());
+        }
+       
         public static int SecondsFromUnixEpoch(this DateTime dateTime)
         {
             return dateTime.SecondsFrom(GetUnixEpoch());
