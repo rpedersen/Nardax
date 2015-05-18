@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Nardax.Tests
@@ -16,7 +15,7 @@ namespace Nardax.Tests
         }
 
         [TestMethod]
-        public void Floor_DateTimeWithSeconds_ReturnsHoursRoundedDowtToHours()
+        public void Floor_DateTimeWithSeconds_ReturnsHoursRoundedDownToHours()
         {
             var expectedDateTime = new DateTime(1974, 7, 3, 11, 0, 0);
 
