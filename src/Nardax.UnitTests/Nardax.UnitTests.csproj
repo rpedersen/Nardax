@@ -55,7 +55,7 @@
     <Compile Include="ULongExtensionsTests.cs" />
     <Compile Include="DecimalExtensionsTests.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
-    <Compile Include="UShortExtensionsTests - Copy.cs" />
+    <Compile Include="FloatExtensionsTests.cs" />
     <Compile Include="UShortExtensionsTests.cs" />
     <Compile Include="UIntExtensionsTests.cs" />
     <Compile Include="LongExtensionsTests.cs" />
