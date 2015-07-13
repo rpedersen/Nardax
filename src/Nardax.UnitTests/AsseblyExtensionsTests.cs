@@ -2,7 +2,7 @@
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Nardax.Tests
+namespace Nardax.UnitTests
 {
     [TestClass]
     public class AsseblyExtensionsTests

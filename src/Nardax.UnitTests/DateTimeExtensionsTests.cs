@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
-namespace Nardax.Tests
+namespace Nardax.UnitTests
 {
     [TestClass]
     public class DateTimeExtensionsTests
@@ -203,6 +204,88 @@ namespace Nardax.Tests
             var result = _date.Max(DateTime.MinValue);
 
             Assert.AreEqual(_date, result);
+        }
+
+        [TestMethod]
+        public void FirstDayOfMonth_ValidDate_ReturnsFirstDay()
+        {
+            var date2 = new DateTime(1974, 7, 1);
+
+            var result = _date.FirstDayOfMonth();
+
+            Assert.AreEqual(date2, result);
+        }
+
+        [TestMethod]
+        public void LastDayOfMonth_ValidDate_ReturnLastDay()
+        {
+            var date2 = new DateTime(1974, 7, 31);
+
+            var result = _date.LastDayOfMonth();
+
+            Assert.AreEqual(date2, result);
+        }
+
+        [TestMethod]
+        public void ToString_FormatNullDateTime_ReturnsEmptyString()
+        {
+            DateTime? date = null;
+
+            var result = date.ToString("MM/dd/YYYY");
+
+            Assert.AreEqual(string.Empty, result);
+        }
+
+        [TestMethod]
+        public void ToString_CustomerIFormatProvider_GetsFormatingFromIFormatProvider()
+        {
+            DateTime? date = new DateTime(1974, 7, 31);
+
+            var formatProviderMock = new Mock<IFormatProvider>();
+
+            date.ToString(formatProviderMock.Object);
+
+            formatProviderMock.Verify(m => m.GetFormat(It.IsAny<Type>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void ToRelativeString_DateMinusOneHour_ReturnsProperLabel()
+        {
+            _date = DateTime.Now.AddHours(-1);
+
+            var result = _date.ToRelativeDateString();
+
+            Assert.AreEqual("more than an hour ago", result);
+        }
+
+        [TestMethod]
+        public void ToRelativeString_DateMinusHalfHour_ReturnsProperLabel()
+        {
+            _date = DateTime.Now.AddHours(-.5);
+
+            var result = _date.ToRelativeDateString();
+
+            Assert.AreEqual("30 minutes ago", result);
+        }
+
+        [TestMethod]
+        public void ToRelativeString_UtcDateMinusOneHour_ReturnsProperLabel()
+        {
+            _date = DateTime.UtcNow.AddHours(-1);
+
+            var result = _date.ToRelativeDateStringUtc();
+
+            Assert.AreEqual("more than an hour ago", result);
+        }
+
+        [TestMethod]
+        public void ToRelativeString_UtcDateMinusHalfMinute_ReturnsProperLabel()
+        {
+            _date = DateTime.UtcNow.AddMinutes(-.5);
+
+            var result = _date.ToRelativeDateString();
+
+            Assert.AreEqual("less than a minute ago", result);
         }
     }
 }

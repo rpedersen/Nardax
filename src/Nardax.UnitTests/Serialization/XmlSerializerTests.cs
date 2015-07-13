@@ -1,11 +1,7 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nardax.Serialization;
 
-namespace Nardax.Tests.Serialization
+namespace Nardax.UnitTests.Serialization
 {
     [TestClass]
     public class XmlSerializerTests

@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nardax.Serialization;
-using System;
 
-namespace Nardax.Tests.Serialization
+namespace Nardax.UnitTests.Serialization
 {
     [TestClass]
     public class BinarySerializerTests

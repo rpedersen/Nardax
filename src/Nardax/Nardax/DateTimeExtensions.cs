@@ -74,12 +74,12 @@ namespace Nardax
         {
             return dateTime.SetTime(12);
         }
-        public static Boolean IsBetween(this DateTime dateTime, DateTime startDateTime, DateTime endDateTime)
+        public static bool IsBetween(this DateTime dateTime, DateTime startDateTime, DateTime endDateTime)
         {
             return dateTime.IsBetween(startDateTime, endDateTime, true);
         }
 
-        public static Boolean IsBetween(this DateTime dateTime, DateTime startDateTime, DateTime endDateTime, bool compareTime)
+        public static bool IsBetween(this DateTime dateTime, DateTime startDateTime, DateTime endDateTime, bool compareTime)
         {
             if (compareTime)
             {
@@ -117,11 +117,6 @@ namespace Nardax
         public static DateTime LastDayOfMonth(this DateTime date)
         {
             return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
-        }
-
-        public static string ToString(this DateTime? date)
-        {
-            return date.ToString(null, DateTimeFormatInfo.CurrentInfo);
         }
 
         public static string ToString(this DateTime? date, string format)
@@ -170,17 +165,17 @@ namespace Nardax
 
             if (diff.TotalDays > 1)
             {
-                return string.Format("{0:N0} days ago", diff.TotalDays);
+                return $"{diff.TotalDays:N0} days ago";
             }
 
-            if (diff.TotalDays == 1)
+            if (diff.TotalDays == 1f)
             {
                 return "yesterday";
             }
 
             if (diff.TotalHours >= 2)
             {
-                return string.Format("{0:N0} hours ago", diff.TotalHours);
+                return $"{diff.TotalHours:N0} hours ago";
             }
 
             if (diff.TotalMinutes >= 60)
@@ -190,7 +185,7 @@ namespace Nardax
 
             if (diff.TotalMinutes >= 5)
             {
-                return string.Format("{0:N0} minutes ago", diff.TotalMinutes);
+                return $"{diff.TotalMinutes:N0} minutes ago";
             }
 
             if (diff.TotalMinutes >= 1)
